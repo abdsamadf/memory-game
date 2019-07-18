@@ -1,6 +1,14 @@
 /*
  * Create a list that holds all of your cards
  */
+let cardsList = document.querySelectorAll(".card");
+console.log(cardsList);
+
+let numbers = [];
+for (let i = 0; i < cardsList.length; i++) {
+    numbers.push(i);
+}
+console.log(numbers);
 
 
 /*
@@ -24,6 +32,28 @@ function shuffle(array) {
 
     return array;
 }
+
+// shuffle the list of cards
+let randomNumbers = shuffle(numbers);
+console.log(randomNumbers);
+let randomCards = [];
+for (let i = 0; i < cardsList.length; i++) {
+    randomCards.push(cardsList[randomNumbers[i]]);
+}
+console.log(randomCards);
+
+// remove cards
+let deck = document.querySelector('.deck');
+console.log(deck);
+while (deck.firstChild) {
+    deck.removeChild(deck.firstChild);
+}
+
+// add each card's HTML to page
+randomCards.forEach(element => {
+    console.log(element);
+    deck.appendChild(element);
+});
 
 
 /*
