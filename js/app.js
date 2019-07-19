@@ -66,10 +66,18 @@ deck.addEventListener('click', (evt) => {
     cardMatchingLogic(evt);
 })
 
+// get the modal element
+let modal = document.getElementById("modal");
+// get the moves text element
+let movesText = document.querySelector(".moves");
 // list of open cards
 let openCards = [];
+// list of match cards
+let matchCards = [];
 // classes for card turn it over
 const cls = ["open", "show"];
+// count moves
+let movesCounter = 0;
 
 /**
  * Show the card
@@ -85,10 +93,13 @@ function cardMatchingLogic(evt) {
         // cards do match, lock the cards in the open position
         if (openCards[0].firstElementChild.classList[1] === openCards[1].firstElementChild.classList[1]) {
             cardsMatch();
+            showMoves();
+            winningLogic();
         }
         // cards do not match, remove the cards from the list and hide the card's symbol
         if (openCards[0].firstElementChild.classList[1] !== openCards[1].firstElementChild.classList[1]) {
             cardsMismatch();
+            showMoves();
         }
     }
 }
@@ -97,6 +108,30 @@ let superToggle = (element, class0, class1) => {
     element.classList.toggle(class0);
     element.classList.toggle(class1);
 }
+/**
+ * check player has game won
+ */
+function winningLogic() {
+    if (matchCards.length >= 16) {
+        modal.style.display = "block";
+        showModal();
+    }
+}
+/**
+ * show the modal
+ */
+function showModal() {
+    $("#demo01").animatedModal(); //initialize animatedModal
+    $("#demo01").click(); //triggers opening of Modal.
+}
+/**
+ * count and show the moves
+ */
+function showMoves() {
+    movesCounter++;
+    movesText.innerHTML = movesCounter;
+}
+
 /**
  * Flip the cards and store the turned-over cards in openCards list
  * @param targetElement
@@ -128,5 +163,6 @@ function cardsMatch() {
     openCards[1].classList.remove(...cls);
     openCards[0].classList.add("match");
     openCards[1].classList.add("match");
-    openCards.splice(0, 2);
+    let cards = openCards.splice(0, 2);
+    matchCards.push(...cards);
 }

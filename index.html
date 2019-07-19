@@ -1,13 +1,16 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Matching Game</title>
     <meta name="description" content="">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
     <link rel="stylesheet" href="css/app.css">
 </head>
+
 <body>
 
     <div class="container">
@@ -16,17 +19,17 @@
         </header>
 
         <section class="score-panel">
-        	<ul class="stars">
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        	</ul>
+            <ul class="stars">
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+            </ul>
 
-        	<span class="moves">3</span> Moves
+            <span class="moves">0</span> Moves
 
             <div class="restart">
-        		<i class="fa fa-repeat"></i>
-        	</div>
+                <i class="fa fa-repeat"></i>
+            </div>
         </section>
 
         <ul class="deck">
@@ -36,7 +39,7 @@
             <li class="card">
                 <i class="fa fa-paper-plane-o"></i>
             </li>
-            <li class="card match">
+            <li class="card">
                 <i class="fa fa-anchor"></i>
             </li>
             <li class="card">
@@ -45,7 +48,7 @@
             <li class="card">
                 <i class="fa fa-cube"></i>
             </li>
-            <li class="card match">
+            <li class="card">
                 <i class="fa fa-anchor"></i>
             </li>
             <li class="card">
@@ -66,7 +69,7 @@
             <li class="card">
                 <i class="fa fa-bomb"></i>
             </li>
-            <li class="card open show">
+            <li class="card">
                 <i class="fa fa-bolt"></i>
             </li>
             <li class="card">
@@ -81,6 +84,26 @@
         </ul>
     </div>
 
+    <div id="modal">
+        <a id="demo01" href="#animatedModal">DEMO01</a>
+
+        <div id="animatedModal">
+            <div class="close-animatedModal">
+                CLOSE MODAL
+            </div>
+
+            <div class="modal-content">
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+                Congratulations
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/animatedModal.min.js"></script>
     <script src="js/app.js"></script>
 </body>
+
 </html>
