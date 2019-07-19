@@ -79,6 +79,14 @@ const cls = ["open", "show"];
 // count moves
 let movesCounter = 0;
 
+// get the stars element
+let starsElement = document.querySelectorAll(".stars li");
+const starsElementLength = starsElement.length;
+// number of moves after decrease star rating
+const movesFactor = 9;
+// multiplying factor
+let factor = 1;
+
 /**
  * Show the card
  * @param evt
@@ -124,12 +132,25 @@ function showModal() {
     $("#demo01").animatedModal(); //initialize animatedModal
     $("#demo01").click(); //triggers opening of Modal.
 }
+
 /**
- * count and show the moves
+ * count and show the moves and star rating based on number of moves
  */
 function showMoves() {
     movesCounter++;
     movesText.innerHTML = movesCounter;
+    starRating();
+}
+
+/**
+ * number of moves during the game visually decrease the star rating
+ */
+function starRating() {
+    if (movesCounter > (factor * movesFactor) && factor <= starsElementLength) {
+        starsElement[starsElementLength - factor].firstElementChild.classList.remove("fa-star");
+        starsElement[starsElementLength - factor].firstElementChild.classList.add("fa-star-o");
+        factor++;
+    }
 }
 
 /**
