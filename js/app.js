@@ -64,7 +64,7 @@ randomCards.forEach(element => {
 // functionality to handle clicks on cards
 deck.addEventListener('click', (evt) => {
     cardMatchingLogic(evt);
-})
+});
 
 // get the modal element
 let modal = document.getElementById("modal");
@@ -86,6 +86,13 @@ const starsElementLength = starsElement.length;
 const movesFactor = 9;
 // multiplying factor
 let factor = 1;
+// get the time element
+let timeElement = document.getElementById("time");
+// initialize second, minute, hour
+let seconds = 0, minutes = 0, hours = 0, t;
+
+// let restartElement = document.querySelector(".restart");
+// console.log(restartElement);
 
 /**
  * Show the card
@@ -116,6 +123,7 @@ let superToggle = (element, class0, class1) => {
     element.classList.toggle(class0);
     element.classList.toggle(class1);
 }
+
 /**
  * check player has game won
  */
@@ -123,8 +131,10 @@ function winningLogic() {
     if (matchCards.length >= 16) {
         modal.style.display = "block";
         showModal();
+        stopTimer();
     }
 }
+
 /**
  * show the modal
  */
@@ -187,3 +197,47 @@ function cardsMatch() {
     let cards = openCards.splice(0, 2);
     matchCards.push(...cards);
 }
+
+// click on any card to start the timer
+deck.addEventListener('click', startTimer, {
+    once: true,
+    passive: true,
+    capture: true
+});
+
+/**
+ * start the timer
+ * @param evt
+ */
+function startTimer(evt) {
+    if (evt.target.nodeName.toLowerCase() === 'li') {
+        timer();
+    }
+}
+/**
+ * stop the timer
+ */
+function stopTimer() {
+    clearTimeout(t);
+}
+
+function add() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+        }
+    }
+
+    timeElement.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+
+    timer();
+}
+
+function timer() {
+    t = setTimeout(add, 1000);
+}
+// timer();
