@@ -8,7 +8,8 @@ let cardsList = ["fa-anchor", "fa-anchor",
                 "fa-bicycle", "fa-bicycle",
                 "fa-diamond", "fa-diamond",
                 "fa-bomb", "fa-bomb",
-                "fa-paper-plane-o", "fa-paper-plane-o"]
+                "fa-paper-plane-o", "fa-paper-plane-o"];
+
 /**
  * build a card html
  * @param  {str} i element of cardsList
@@ -39,11 +40,29 @@ function shuffle(array) {
     return array;
 }
 
-let deck = document.querySelector('.deck');
+// get the html elements
+let deck = document.querySelector('.deck'),
+    starElement = document.querySelector(".stars"),
+    modal = document.getElementById("modal"),
+    movesText = document.querySelector(".moves"),
+    timeElement = document.getElementById("time"),
+    restartElement = document.querySelector(".restart");
+// list of open and match cards
+let openCards, matchCards;
+// number of stars
+let nStars = 3;
+// count moves and multiplying factor
+let movesCounter, factor;
+// initialize second, minute, hour
+let seconds, minutes, hours, t;
+// stars rating
+let starElementChildren = starElement.children;
+// number of moves after decrease star rating
+const movesFactor = 9;
+// classes for card turn it over
+const cls = ["open", "show"];
 
-let cardsHTML = buildGrid;
-cardsHTML();
-
+initGame();
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -60,33 +79,81 @@ deck.addEventListener('click', (evt) => {
     cardMatchingLogic(evt);
 });
 
-// get the modal element
-let modal = document.getElementById("modal");
-// get the moves text element
-let movesText = document.querySelector(".moves");
-// list of open cards
-let openCards = [];
-// list of match cards
-let matchCards = [];
-// classes for card turn it over
-const cls = ["open", "show"];
-// count moves
-let movesCounter = 0;
+// click on restart button to restart the game
+restartElement.addEventListener('click', () => {
+    restartGame();
+});
 
-// get the stars element
-let starsElement = document.querySelectorAll(".stars li");
-const starsElementLength = starsElement.length;
-// number of moves after decrease star rating
-const movesFactor = 9;
-// multiplying factor
-let factor = 1;
-// get the time element
-let timeElement = document.getElementById("time");
-// initialize second, minute, hour
-let seconds = 0, minutes = 0, hours = 0, t;
+/**
+ * restart the game
+ */
+function restartGame() {
+    initGame();
+}
 
-// let restartElement = document.querySelector(".restart");
-// console.log(restartElement);
+/**
+ * initialize game
+ */
+function initGame() {
+    resetGrid();
+    initCardVariables();
+    clearMoves();
+    stopTimer();
+    clearTimer();
+    generateStarRating();
+    startTimerEvent();
+}
+
+/**
+ * initialize card variables
+ */
+function initCardVariables() {
+    openCards = [];
+    matchCards = [];
+}
+
+/**
+ * clear the moves count
+ */
+function clearMoves() {
+    movesText.textContent = "0";
+    movesCounter = 0;
+    factor = 1;
+}
+
+/**
+ * clear the timer
+ */
+function clearTimer() {
+    timeElement.textContent = "00:00:00";
+    seconds = 0;
+    minutes = 0;
+    hours = 0;
+}
+
+/**
+ * generate a star html
+ */
+function generateStar() {
+    return `<li><i class="fa fa-star"></i></li>`;
+}
+
+/**
+ * generate a star rating html
+ */
+function generateStarRating() {
+    if (starElement.childElementCount > 0) {
+        while (starElement.firstChild) {
+            starElement.removeChild(starElement.firstChild);
+        }
+
+    }
+    if (starElement.childElementCount <= 0) {
+        for (let i = 0; i < nStars; i++) {
+            starElement.innerHTML += generateStar();
+        }
+    }
+}
 
 /**
  * Display the cards on the page
@@ -102,6 +169,20 @@ function buildGrid() {
     cardsHTML.forEach(element => {
         deck.innerHTML += element;
     });
+}
+
+/**
+ * reset the grid
+ */
+function resetGrid() {
+    // if there is already cards therefore remove cards
+    if (deck.childElementCount > 0) {
+        while (deck.firstChild) {
+            deck.removeChild(deck.firstChild);
+        }
+    }
+    // add card's HTML to page
+    buildGrid();
 }
 
 /**
@@ -166,9 +247,9 @@ function showMoves() {
  * number of moves during the game visually decrease the star rating
  */
 function starRating() {
-    if (movesCounter > (factor * movesFactor) && factor <= starsElementLength) {
-        starsElement[starsElementLength - factor].firstElementChild.classList.remove("fa-star");
-        starsElement[starsElementLength - factor].firstElementChild.classList.add("fa-star-o");
+    if (movesCounter > (factor * movesFactor) && factor <= nStars) {
+        starElementChildren[nStars - factor].firstElementChild.classList.remove("fa-star");
+        starElementChildren[nStars - factor].firstElementChild.classList.add("fa-star-o");
         factor++;
     }
 }
@@ -210,11 +291,13 @@ function cardsMatch() {
 }
 
 // click on any card to start the timer
-deck.addEventListener('click', startTimer, {
-    once: true,
-    passive: true,
-    capture: true
-});
+function startTimerEvent() {
+    deck.addEventListener('click', startTimer, {
+        once: true,
+        passive: true,
+        capture: true
+    });
+}
 
 /**
  * start the timer
