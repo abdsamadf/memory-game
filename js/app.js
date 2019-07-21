@@ -122,7 +122,7 @@ function cardMatchingLogic(evt) {
             winningLogic();
         }
         // cards do not match, remove the cards from the list and hide the card's symbol
-        if (openCards[0].firstElementChild.classList[1] !== openCards[1].firstElementChild.classList[1]) {
+        else if (openCards[0].firstElementChild.classList[1] !== openCards[1].firstElementChild.classList[1]) {
             cardsMismatch();
             showMoves();
         }
@@ -191,8 +191,8 @@ function cardFlip(targetElement) {
  */
 function cardsMismatch() {
     setTimeout(() => {
-        superToggle(openCards[0], "open", "show");
-        superToggle(openCards[1], "open", "show");
+        superToggle(openCards[0], ...cls);
+        superToggle(openCards[1], ...cls);
         openCards.splice(0, 2);
     }, 1000);
 }
