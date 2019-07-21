@@ -1,11 +1,20 @@
 /*
  * Create a list that holds all of your cards
  */
-let cardsList = document.querySelectorAll(".card");
-
-let numbers = [];
-for (let i = 0; i < cardsList.length; i++) {
-    numbers.push(i);
+let cardsList = ["fa-anchor", "fa-anchor",
+                "fa-bolt", "fa-bolt",
+                "fa-cube", "fa-cube",
+                "fa-leaf", "fa-leaf",
+                "fa-bicycle", "fa-bicycle",
+                "fa-diamond", "fa-diamond",
+                "fa-bomb", "fa-bomb",
+                "fa-paper-plane-o", "fa-paper-plane-o"]
+/**
+ * build a card html
+ * @param  {str} i element of cardsList
+ */
+function buildCard(i) {
+    return `<li class="card"><i class="fa ${i}"></i></li>`;
 }
 
 /*
@@ -30,25 +39,10 @@ function shuffle(array) {
     return array;
 }
 
-// shuffle the list of cards
-let randomNumbers = shuffle(numbers);
-let randomCards = [];
-for (let i = 0; i < cardsList.length; i++) {
-    randomCards.push(cardsList[randomNumbers[i]]);
-}
-
-// remove cards
 let deck = document.querySelector('.deck');
-while (deck.firstChild) {
-    deck.removeChild(deck.firstChild);
-}
 
-// add each card's HTML to page
-randomCards.forEach(element => {
-    console.log(element);
-    deck.appendChild(element);
-});
-
+let cardsHTML = buildGrid;
+cardsHTML();
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -93,6 +87,22 @@ let seconds = 0, minutes = 0, hours = 0, t;
 
 // let restartElement = document.querySelector(".restart");
 // console.log(restartElement);
+
+/**
+ * Display the cards on the page
+ */
+function buildGrid() {
+    // shuffle the list of cards
+    let shuffleCards = shuffle(cardsList);
+    // create each card HTML
+    let cardsHTML = shuffleCards.map(i => {
+        return buildCard(i);
+    });
+    // add each card's HTML to page
+    cardsHTML.forEach(element => {
+        deck.innerHTML += element;
+    });
+}
 
 /**
  * Show the card
@@ -175,6 +185,7 @@ function cardFlip(targetElement) {
         }
     }
 }
+
 /**
  * cards do not match, remove the cards from the list and hide the card's symbol
  */
@@ -214,6 +225,7 @@ function startTimer(evt) {
         timer();
     }
 }
+
 /**
  * stop the timer
  */
@@ -240,4 +252,3 @@ function add() {
 function timer() {
     t = setTimeout(add, 1000);
 }
-// timer();
