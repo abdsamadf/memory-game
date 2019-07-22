@@ -62,6 +62,8 @@ const movesFactor = 9;
 // classes for card turn it over
 const cls = ["open", "show"];
 
+let stopGame = false;
+
 initGame();
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -190,6 +192,7 @@ function resetGrid() {
  * @param evt
  */
 function cardMatchingLogic(evt) {
+    if (stopGame) return;
     let targetElement = evt.target;
 
     cardFlip(targetElement);
@@ -271,10 +274,12 @@ function cardFlip(targetElement) {
  * cards do not match, remove the cards from the list and hide the card's symbol
  */
 function cardsMismatch() {
+    stopGame = true;
     setTimeout(() => {
         superToggle(openCards[0], ...cls);
         superToggle(openCards[1], ...cls);
         openCards.splice(0, 2);
+        stopGame = false;
     }, 1000);
 }
 
