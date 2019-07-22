@@ -47,6 +47,8 @@ let deck = document.querySelector('.deck'),
     movesText = document.querySelector(".moves"),
     timeElement = document.getElementById("time"),
     restartElement = document.querySelector(".restart");
+    playAgainBtn = document.querySelector(".close-animatedModal.btn-slice");
+
 // list of open and match cards
 let openCards, matchCards;
 // number of stars
@@ -83,6 +85,11 @@ deck.addEventListener('click', (evt) => {
 
 // click on restart button to restart the game
 restartElement.addEventListener('click', () => {
+    restartGame();
+});
+
+// click on play again button to play again
+playAgainBtn.addEventListener('click', () => {
     restartGame();
 });
 
