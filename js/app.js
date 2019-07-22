@@ -59,12 +59,12 @@ let movesCounter, factor;
 let seconds, minutes, hours, t;
 // stars rating
 let starElementChildren = starElement.children;
+// stop the game
+let stopGame = false;
 // number of moves after decrease star rating
 const movesFactor = 9;
 // classes for card turn it over
 const cls = ["open", "show"];
-
-let stopGame = false;
 
 initGame();
 /*
@@ -223,7 +223,7 @@ function cardMatchingLogic(evt) {
 let superToggle = (element, class0, class1) => {
     element.classList.toggle(class0);
     element.classList.toggle(class1);
-}
+};
 
 /**
  * check player has game won

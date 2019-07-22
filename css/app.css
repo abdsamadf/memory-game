@@ -218,7 +218,7 @@ h1 {
 
 .btn-slice .top {
     position: relative;
-    height: 6px;
+    height: 7px;
     overflow: hidden;
     top: 0;
     -webkit-transition: all 300ms cubic-bezier(1.000, 0, 0.025, 1);
@@ -244,7 +244,7 @@ h1 {
 
 .btn-slice .bottom {
     position: relative;
-    height: 6px;
+    height: 7px;
     overflow: hidden;
     bottom: 0;
     -webkit-transition: all 300ms cubic-bezier(1.000, 0, 0.025, 1);
