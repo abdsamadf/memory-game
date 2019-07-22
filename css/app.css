@@ -130,6 +130,18 @@ h1 {
     text-align: center;
 }
 
+.congrats-msg {
+    font-size: 20px;
+    font-weight: bold;
+    color: #11251A;
+}
+
+.score-message {
+    font-size: 14px;
+    white-space: pre;
+    color: #184120;
+}
+
 /* checkmark css */
 /* css animated checkmark from https://stackoverflow.com/a/41078668 */
 .checkmark__circle {

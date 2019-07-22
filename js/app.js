@@ -48,6 +48,7 @@ let deck = document.querySelector('.deck'),
     timeElement = document.getElementById("time"),
     restartElement = document.querySelector(".restart");
     playAgainBtn = document.querySelector(".close-animatedModal.btn-slice");
+    scoreMsg = document.querySelector(".score-message");
 
 // list of open and match cards
 let openCards, matchCards;
@@ -61,6 +62,8 @@ let seconds, minutes, hours, t;
 let starElementChildren = starElement.children;
 // stop the game
 let stopGame = false;
+// count the stars when game finishes
+let starCount = 0;
 // number of moves after decrease star rating
 const movesFactor = 9;
 // classes for card turn it over
@@ -233,6 +236,7 @@ function winningLogic() {
         modal.style.display = "block";
         showModal();
         stopTimer();
+        modalInformation();
     }
 }
 
@@ -242,6 +246,33 @@ function winningLogic() {
 function showModal() {
     $("#open-modal").animatedModal(); //initialize animatedModal
     $("#open-modal").click(); //triggers opening of Modal.
+}
+
+/**
+ * show the modal information
+ */
+function modalInformation() {
+    countStars();
+    setScoreMsg();
+}
+
+/**
+ * count the stars currently star rating has
+ */
+function countStars() {
+    starCount = 0;
+    for (let i = 0; i < starElementChildren.length; i++) {
+        if (starElementChildren[i].firstElementChild.classList.contains("fa-star")) {
+            starCount++;
+        }
+    }
+}
+
+/**
+ * set the score message
+ */
+function setScoreMsg() {
+    scoreMsg.textContent = `With ${movesCounter} Moves and ${starCount} Stars.\r\nTime Taken ${(hours > 0) ? `${hours}h ` : ''}${(minutes > 0) ? `${minutes}m ` : ''}${(seconds >= 0) ? `${seconds}s` : ''}\r\nWoohoo!`;
 }
 
 /**
