@@ -118,7 +118,7 @@ function initGame() {
  */
 function initCardVariables() {
     openCards = [];
-    matchCards = [];
+    matchCards = ["l", "l", "l", "l", "l", "l", "l", "l", "l", "l", "l", "l", "l", "l", ];
 }
 
 /**
@@ -240,8 +240,8 @@ function winningLogic() {
  * show the modal
  */
 function showModal() {
-    $("#demo01").animatedModal(); //initialize animatedModal
-    $("#demo01").click(); //triggers opening of Modal.
+    $("#open-modal").animatedModal(); //initialize animatedModal
+    $("#open-modal").click(); //triggers opening of Modal.
 }
 
 /**
