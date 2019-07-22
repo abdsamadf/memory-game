@@ -118,7 +118,7 @@ function initGame() {
  */
 function initCardVariables() {
     openCards = [];
-    matchCards = ["l", "l", "l", "l", "l", "l", "l", "l", "l", "l", "l", "l", "l", "l", ];
+    matchCards = [];
 }
 
 /**
