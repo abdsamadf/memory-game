@@ -313,9 +313,13 @@ function cardFlip(targetElement) {
  */
 function cardsMismatch() {
     stopGame = true;
+    openCards[0].classList.add("mismatch");
+    openCards[1].classList.add("mismatch");
     setTimeout(() => {
         superToggle(openCards[0], ...cls);
         superToggle(openCards[1], ...cls);
+        openCards[0].classList.remove("mismatch");
+        openCards[1].classList.remove("mismatch");
         openCards.splice(0, 2);
         stopGame = false;
     }, 1000);
