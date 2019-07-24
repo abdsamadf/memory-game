@@ -315,11 +315,15 @@ function cardsMismatch() {
     stopGame = true;
     openCards[0].classList.add("mismatch");
     openCards[1].classList.add("mismatch");
+    openCards[0].classList.add("animated", "wobble", "faster");
+    openCards[1].classList.add("animated", "wobble", "faster");
     setTimeout(() => {
         superToggle(openCards[0], ...cls);
         superToggle(openCards[1], ...cls);
         openCards[0].classList.remove("mismatch");
         openCards[1].classList.remove("mismatch");
+        openCards[0].classList.remove("animated", "wobble", "faster");
+        openCards[1].classList.remove("animated", "wobble", "faster");
         openCards.splice(0, 2);
         stopGame = false;
     }, 1000);
@@ -333,6 +337,8 @@ function cardsMatch() {
     openCards[1].classList.remove(...cls);
     openCards[0].classList.add("match");
     openCards[1].classList.add("match");
+    openCards[0].classList.add("animated", "pulse", "faster");
+    openCards[1].classList.add("animated", "pulse", "faster");
     let cards = openCards.splice(0, 2);
     matchCards.push(...cards);
 }
