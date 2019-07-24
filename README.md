@@ -14,3 +14,9 @@ Click on this [link](https://abdsamadf.github.io/memory-game) to see the website
 * jQuery
 * HTML5
 * CSS3
+* CSS Animation [animate.css](https://daneden.github.io/animate.css)
+* Animated Modal [animatedModal.js](https://joaopereirawd.github.io/animatedModal.js)
+
+## Fancy Looking Matching Game
+
+![Matching Game looks like](img/screenshots/matching-game.png)
