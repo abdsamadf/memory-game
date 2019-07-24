@@ -34,7 +34,7 @@ function shuffle(array) {
 }
 
 // get the html elements
-let deck = document.querySelector('.deck'),
+let deck = document.querySelector(".deck"),
     starElement = document.querySelector(".stars"),
     modal = document.getElementById("modal"),
     movesText = document.querySelector(".moves"),
@@ -65,17 +65,17 @@ const cls = ["open", "show"];
 initGame();
 
 // functionality to handle clicks on cards
-deck.addEventListener('click', (evt) => {
+deck.addEventListener("click", (evt) => {
     cardMatchingLogic(evt);
 });
 
 // click on restart button to restart the game
-restartElement.addEventListener('click', () => {
+restartElement.addEventListener("click", () => {
     restartGame();
 });
 
 // click on play again button to play again
-playAgainBtn.addEventListener('click', () => {
+playAgainBtn.addEventListener("click", () => {
     restartGame();
 });
 
@@ -255,7 +255,7 @@ function countStars() {
  * set the score message
  */
 function setScoreMsg() {
-    scoreMsg.textContent = `With ${movesCounter} Moves and ${starCount} Stars.\r\nTime Taken ${(hours > 0) ? `${hours}h ` : ''}${(minutes > 0) ? `${minutes}m ` : ''}${(seconds >= 0) ? `${seconds}s` : ''}\r\nWoohoo!`;
+    scoreMsg.textContent = `With ${movesCounter} Moves and ${starCount} Stars.\r\nTime Taken ${(hours > 0) ? `${hours}h ` : ""}${(minutes > 0) ? `${minutes}m ` : ""}${(seconds >= 0) ? `${seconds}s` : ""}\r\nWoohoo!`;
 }
 
 /**
@@ -283,7 +283,7 @@ function starRating() {
  * @param targetElement
  */
 function cardFlip(targetElement) {
-    if (targetElement.nodeName.toLowerCase() === 'li' &&
+    if (targetElement.nodeName.toLowerCase() === "li" &&
         !targetElement.classList.contains(...cls) &&
         !targetElement.classList.contains("match")) {
             superToggle(targetElement, ...cls);
@@ -329,7 +329,7 @@ function cardsMatch() {
 
 // click on any card to start the timer
 function startTimerEvent() {
-    deck.addEventListener('click', startTimer, {
+    deck.addEventListener("click", startTimer, {
         once: true,
         passive: true,
         capture: true
@@ -341,7 +341,7 @@ function startTimerEvent() {
  * @param evt
  */
 function startTimer(evt) {
-    if (evt.target.nodeName.toLowerCase() === 'li') {
+    if (evt.target.nodeName.toLowerCase() === "li") {
         timer();
     }
 }
