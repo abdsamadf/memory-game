@@ -300,11 +300,12 @@ function starRating() {
  * @param targetElement
  */
 function cardFlip(targetElement) {
-    if (targetElement.nodeName.toLowerCase() === 'li') {
-        if (!targetElement.classList.contains(...cls)) {
+    if (targetElement.nodeName.toLowerCase() === 'li' &&
+        !targetElement.classList.contains(...cls) &&
+        !targetElement.classList.contains("match")) {
             superToggle(targetElement, ...cls);
             openCards.push(targetElement);
-        }
+
     }
 }
 
