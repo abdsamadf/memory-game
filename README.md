@@ -17,9 +17,14 @@ Click on this [link](https://abdsamadf.github.io/memory-game) to see the website
 * CSS Animation [animate.css](https://daneden.github.io/animate.css)
 * Animated Modal [animatedModal.js](https://joaopereirawd.github.io/animatedModal.js)
 
+## Code Style
+
+[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
+
 ## Fancy Looking Matching Game
 
 ![Matching Game looks like](img/screenshots/matching-game.png)
+
 
 ## License [![MIT license](https://img.shields.io/github/license/abdsamadf/memory-game)](http://opensource.org/licenses/MIT)
 
