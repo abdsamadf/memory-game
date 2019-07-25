@@ -20,3 +20,7 @@ Click on this [link](https://abdsamadf.github.io/memory-game) to see the website
 ## Fancy Looking Matching Game
 
 ![Matching Game looks like](img/screenshots/matching-game.png)
+
+## License [![MIT license](https://img.shields.io/github/license/abdsamadf/memory-game)](http://opensource.org/licenses/MIT)
+
+The contents of this repository are covered under a [MIT License](https://github.com/abdsamadf/memory-game/blob/master/LICENSE).
