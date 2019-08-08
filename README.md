@@ -26,6 +26,8 @@ Click on this [link](https://abdsamadf.github.io/memory-game) to see the website
 
 ![Matching Game looks like](img/screenshots/matching-game.png)
 
+## Contributing
+Contributions are always welcome! Please read the [contribution guidelines](CONTRIBUTING.md) first.
 
 ## License [![MIT license](https://img.shields.io/github/license/abdsamadf/memory-game)](http://opensource.org/licenses/MIT)
 
