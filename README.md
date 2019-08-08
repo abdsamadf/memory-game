@@ -1,4 +1,4 @@
-# Memory Game Project
+# Udacity FEND Memory Game Project :video_game:
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
 MemoryGame is Single Page App
