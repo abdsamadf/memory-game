@@ -29,6 +29,8 @@ Click on this [link](https://abdsamadf.github.io/memory-game) to see the website
 ## Contributing
 Contributions are always welcome! Please read the [contribution guidelines](CONTRIBUTING.md) first.
 
+Please note that this project is released with a [Contributor Code of Conduct](code-of-conduct.md). By participating in this project you agree to abide by its terms.
+
 ## License [![MIT license](https://img.shields.io/github/license/abdsamadf/memory-game)](http://opensource.org/licenses/MIT)
 
 The contents of this repository are covered under a [MIT License](https://github.com/abdsamadf/memory-game/blob/master/LICENSE).
